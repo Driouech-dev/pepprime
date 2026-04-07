@@ -13,6 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { product, related } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={`pepprime | ${product.name}`} description={product.shortDescription}>
@@ -43,7 +44,7 @@ const { product, related } = Astro.props;
         </div>
 
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <a href="/contact" class="rounded-full bg-brand-navy px-6 py-3.5 text-center text-sm font-semibold text-white shadow-soft transition hover:bg-brand-blue">
+          <a href={`${base}contact/`} class="rounded-full bg-brand-navy px-6 py-3.5 text-center text-sm font-semibold text-white shadow-soft transition hover:bg-brand-blue">
             Request Quote
           </a>
           <a href="https://wa.me/8615102940126" target="_blank" rel="noreferrer" class="rounded-full border border-blue-200 px-6 py-3.5 text-center text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:bg-blue-50">
@@ -66,11 +67,11 @@ const { product, related } = Astro.props;
           <div class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Related items</div>
           <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">More products</h2>
         </div>
-        <a href="/products" class="text-sm font-semibold text-brand-navy">Back to all products</a>
+        <a href={`${base}products/`} class="text-sm font-semibold text-brand-navy">Back to all products</a>
       </div>
       <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {related.map((item) => (
-          <a href={`/products/${item.slug}`} class="overflow-hidden rounded-[1.75rem] border border-blue-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
+          <a href={`${base}products/${item.slug}/`} class="overflow-hidden rounded-[1.75rem] border border-blue-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
             <div class="aspect-[4/3] overflow-hidden bg-blue-50/50">
               <img src={item.image} alt={item.name} class="h-full w-full object-cover" />
             </div>
