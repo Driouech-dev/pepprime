@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products } from '../../data/products';
+---
+
+<BaseLayout
+  title="pepprime | Products"
+  description="Browse the current pepprime peptide catalog with visible pricing and direct inquiry contact."
+>
+  <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16">
+    <div class="max-w-3xl">
+      <div class="label-pill">Products</div>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+        Current peptide catalog
+      </h1>
+      <p class="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
+        Explore the current pepprime product range with visible pricing, clean product presentation, and direct inquiry by email or WhatsApp.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+</BaseLayout>
