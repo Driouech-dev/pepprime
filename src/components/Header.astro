@@ -1,0 +1,72 @@
+---
+const pathname = Astro.url.pathname;
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/products', label: 'Products' },
+  { href: '/about', label: 'Company' },
+  { href: '/contact', label: 'Contact' }
+];
+
+const isActive = (href: string) => pathname === href || (href !== '/' && pathname.startsWith(href));
+---
+
+<header class="sticky top-0 z-50 border-b border-blue-100/80 bg-white/90 backdrop-blur-lg">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
+    <a href="/" class="flex min-w-0 items-center gap-3">
+      <img src="/images/logo.jpg" alt="pepprime logo" class="h-11 w-11 rounded-2xl border border-blue-100 object-cover shadow-sm sm:h-12 sm:w-12" />
+      <div class="min-w-0">
+        <div class="truncate text-base font-semibold tracking-wide text-slate-950 sm:text-lg">pepprime</div>
+        <div class="text-xs text-slate-500">Molecular Innovation</div>
+      </div>
+    </a>
+
+    <nav class="hidden items-center gap-2 md:flex">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'rounded-full px-4 py-2 text-sm font-medium transition-all duration-300',
+            isActive(item.href)
+              ? 'bg-brand-softblue text-brand-navy shadow-sm'
+              : 'text-slate-600 hover:bg-blue-50 hover:text-brand-navy'
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="hidden md:block">
+      <a href="/contact" class="rounded-full bg-brand-navy px-5 py-2.5 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-blue hover:shadow-glow">
+        Prices + Inquiry
+      </a>
+    </div>
+
+    <details class="relative md:hidden">
+      <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-2xl border border-blue-100 bg-white text-slate-700 shadow-sm transition hover:bg-blue-50">
+        <span class="sr-only">Open menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </summary>
+      <div class="absolute right-0 top-14 w-72 rounded-3xl border border-blue-100 bg-white p-3 shadow-soft">
+        <div class="grid gap-1 text-sm">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                'rounded-2xl px-4 py-3 transition-all duration-300',
+                isActive(item.href) ? 'bg-brand-softblue font-medium text-brand-navy' : 'hover:bg-blue-50'
+              ]}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a href="/contact" class="mt-2 rounded-2xl bg-brand-navy px-4 py-3 text-center font-medium text-white shadow-soft transition-all duration-300 hover:bg-brand-blue">
+            Start Inquiry
+          </a>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>

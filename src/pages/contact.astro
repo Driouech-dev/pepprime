@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const whatsappLink = 'https://wa.me/8615102940126';
+const email = 'info@pepprime.com';
+---
+
+<BaseLayout title="pepprime | Contact" description="Contact pepprime by email or WhatsApp.">
+  <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16">
+    <div class="grid gap-8 lg:grid-cols-[1fr_0.95fr]">
+      <div>
+        <div class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Contact</div>
+        <h1 class="mt-2 text-4xl font-semibold tracking-tight text-slate-950">Contact pepprime</h1>
+        <p class="mt-4 max-w-2xl text-sm leading-8 text-slate-600 sm:text-base">
+          For product pricing, quantity request, shipping confirmation, and general inquiry, please contact pepprime directly by WhatsApp or email.
+        </p>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-[1.5rem] border border-blue-100 bg-white p-5 shadow-soft">
+            <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Email</div>
+            <a href={`mailto:${email}`} class="mt-2 block break-all text-sm font-semibold text-slate-950 transition hover:text-brand-navy">{email}</a>
+          </div>
+          <div class="rounded-[1.5rem] border border-blue-100 bg-white p-5 shadow-soft">
+            <div class="text-xs uppercase tracking-[0.2em] text-slate-400">WhatsApp</div>
+            <a href={whatsappLink} target="_blank" rel="noreferrer" class="mt-2 block text-sm font-semibold text-slate-950 transition hover:text-brand-navy">+8615102940126</a>
+          </div>
+          <div class="rounded-[1.5rem] border border-blue-100 bg-white p-5 shadow-soft">
+            <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Location</div>
+            <div class="mt-2 text-sm font-semibold text-slate-950">China</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-[2rem] border border-blue-100 bg-gradient-to-br from-brand-navy via-brand-blue to-sky-500 p-8 text-white shadow-soft">
+        <div class="label-pill label-pill--light">Direct Inquiry</div>
+        <h2 class="mt-4 text-3xl font-semibold tracking-tight">Email or WhatsApp</h2>
+        <p class="mt-4 text-sm leading-8 text-blue-50 sm:text-base">
+          Send the product name, required quantity, and destination country. pepprime will reply directly with pricing and shipping details.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <a href={whatsappLink} target="_blank" rel="noreferrer" class="rounded-full bg-white px-6 py-3.5 text-center text-sm font-semibold text-brand-navy shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50">
+            Open WhatsApp
+          </a>
+          <a href={`mailto:${email}`} class="rounded-full border border-white/40 px-6 py-3.5 text-center text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10">
+            Send Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
