@@ -1,8 +1,16 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
 <footer class="border-t border-blue-100 bg-white">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.1fr_0.9fr_1fr]">
     <div>
       <div class="flex items-center gap-3">
-        <img src="/images/logo.jpg" alt="pepprime logo" class="h-11 w-11 rounded-2xl border border-blue-100 object-cover shadow-sm" />
+        <img
+          src={`${base}images/logo.jpg`}
+          alt="pepprime logo"
+          class="h-11 w-11 rounded-2xl border border-blue-100 object-cover shadow-sm"
+        />
         <div>
           <div class="text-lg font-semibold text-slate-950">pepprime</div>
           <div class="text-xs text-slate-500">Molecular Innovation</div>
@@ -16,10 +24,10 @@
     <div>
       <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Pages</h2>
       <ul class="mt-4 space-y-3 text-sm text-slate-600">
-        <li><a class="transition hover:text-brand-navy" href="/">Home</a></li>
-        <li><a class="transition hover:text-brand-navy" href="/products">Products</a></li>
-        <li><a class="transition hover:text-brand-navy" href="/about">Company</a></li>
-        <li><a class="transition hover:text-brand-navy" href="/contact">Contact</a></li>
+        <li><a class="transition hover:text-brand-navy" href={base}>Home</a></li>
+        <li><a class="transition hover:text-brand-navy" href={`${base}products/`}>Products</a></li>
+        <li><a class="transition hover:text-brand-navy" href={`${base}about/`}>Company</a></li>
+        <li><a class="transition hover:text-brand-navy" href={`${base}contact/`}>Contact</a></li>
       </ul>
     </div>
 
