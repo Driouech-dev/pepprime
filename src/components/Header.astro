@@ -3,39 +3,55 @@ const base = import.meta.env.BASE_URL;
 const pathname = Astro.url.pathname;
 
 const navItems = [
-  { label: 'Home', href: base },
-  { label: 'Products', href: `${base}products/` },
-  { label: 'About', href: `${base}about/` },
-  { label: 'Contact', href: `${base}contact/` },
+  { label: 'Home', href: base, key: 'nav.home' },
+  { label: 'Products', href: `${base}products/`, key: 'nav.products' },
+  { label: 'About', href: `${base}about/`, key: 'nav.about' },
+  { label: 'Contact', href: `${base}contact/`, key: 'nav.contact' },
 ];
 
-const isActive = (href: string) =>
-  pathname === href || (href !== base && pathname.startsWith(href));
+const isActive = (href: string) => pathname === href || (href !== base && pathname.startsWith(href));
+
+const languages = [
+  { code: 'en', name: 'English', native: 'English', flag: `${base}flags/gb.svg` },
+  { code: 'fr', name: 'French', native: 'Français', flag: `${base}flags/fr.svg` },
+  { code: 'ar', name: 'Arabic', native: 'العربية', flag: `${base}flags/sa.svg` },
+  { code: 'de', name: 'German', native: 'Deutsch', flag: `${base}flags/de.svg` },
+  { code: 'it', name: 'Italian', native: 'Italiano', flag: `${base}flags/it.svg` },
+  { code: 'zh', name: 'Chinese', native: '中文', flag: `${base}flags/cn.svg` },
+  { code: 'ja', name: 'Japanese', native: '日本語', flag: `${base}flags/jp.svg` },
+  { code: 'es', name: 'Spanish', native: 'Español', flag: `${base}flags/es.svg` },
+  { code: 'pt', name: 'Portuguese', native: 'Português', flag: `${base}flags/pt.svg` },
+  { code: 'ru', name: 'Russian', native: 'Русский', flag: `${base}flags/ru.svg` },
+  { code: 'ko', name: 'Korean', native: '한국어', flag: `${base}flags/kr.svg` },
+];
+
+const currentLanguage = languages[0];
 ---
 
-<header class="sticky top-0 z-50 border-b border-blue-100/80 bg-white/90 backdrop-blur-lg">
+<header class="sticky top-0 z-50 border-b border-white/5 bg-brand-midnight/85 backdrop-blur-xl">
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
     <a href={base} class="flex min-w-0 items-center gap-3">
       <img
         src={`${base}images/logo.jpg`}
         alt="pepprime logo"
-        class="h-11 w-11 rounded-2xl border border-blue-100 object-cover shadow-sm sm:h-12 sm:w-12"
+        class="h-11 w-11 rounded-2xl border border-brand-border object-cover shadow-soft sm:h-12 sm:w-12"
       />
       <div class="min-w-0">
-        <div class="truncate text-base font-semibold tracking-wide text-slate-950 sm:text-lg">pepprime</div>
-        <div class="text-xs text-slate-500">Molecular Innovation</div>
+        <div class="truncate text-base font-semibold tracking-wide text-white sm:text-lg">pepprime</div>
+        <div class="text-xs text-brand-dim" data-i18n="site.tagline">Molecular Innovation</div>
       </div>
     </a>
 
-    <nav class="hidden items-center gap-2 md:flex">
+    <nav class="hidden items-center gap-2 lg:flex">
       {navItems.map((item) => (
         <a
           href={item.href}
+          data-i18n={item.key}
           class:list={[
             'rounded-full px-4 py-2 text-sm font-medium transition-all duration-300',
             isActive(item.href)
-              ? 'bg-brand-softblue text-brand-navy shadow-sm'
-              : 'text-slate-600 hover:bg-blue-50 hover:text-brand-navy'
+              ? 'bg-white/10 text-white shadow-edge'
+              : 'text-brand-muted hover:bg-white/5 hover:text-white'
           ]}
         >
           {item.label}
@@ -43,45 +59,71 @@ const isActive = (href: string) =>
       ))}
     </nav>
 
-    <div class="hidden md:block">
-      <a
-        href={`${base}contact/`}
-        class="rounded-full bg-brand-navy px-5 py-2.5 text-sm font-medium text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-blue hover:shadow-glow"
-      >
-        Prices + Inquiry
-      </a>
+    <div class="hidden items-center lg:flex">
+      <details data-lang-switcher class="lang-menu">
+        <summary class="lang-trigger">
+          <span class="flex items-center gap-2 min-w-0">
+            <img data-lang-current-flag src={currentLanguage.flag} alt="" class="lang-flag" />
+            <span data-lang-current-name class="truncate">{currentLanguage.native}</span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-dim transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+          </svg>
+        </summary>
+        <div class="lang-dropdown">
+          {languages.map((language) => (
+            <button type="button" class="lang-option" data-lang-option={language.code} data-lang-name={language.native} data-lang-flag={language.flag}>
+              <img src={language.flag} alt="" class="lang-flag" />
+              <span>{language.native}</span>
+            </button>
+          ))}
+        </div>
+      </details>
     </div>
 
-    <details class="relative md:hidden">
-      <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-2xl border border-blue-100 bg-white text-slate-700 shadow-sm transition hover:bg-blue-50">
-        <span class="sr-only">Open menu</span>
+    <details class="relative lg:hidden">
+      <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-2xl border border-brand-border bg-white/5 text-brand-muted shadow-soft transition hover:bg-white/10 hover:text-white">
+        <span class="sr-only" data-i18n="nav.openMenu">Open menu</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
         </svg>
       </summary>
-
-      <div class="absolute right-0 top-14 w-72 rounded-3xl border border-blue-100 bg-white p-3 shadow-soft">
+      <div class="absolute right-0 top-14 w-72 rounded-3xl border border-brand-border bg-brand-surface/95 p-3 shadow-soft backdrop-blur-xl">
+        <div class="mb-2 rounded-2xl border border-brand-border bg-white/5 p-3">
+          <div class="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-dim"><span aria-hidden="true">🌐</span><span>Language</span></div>
+          <details data-lang-switcher class="lang-menu w-full">
+            <summary class="lang-trigger w-full">
+              <span class="flex items-center gap-2 min-w-0">
+                <img data-lang-current-flag src={currentLanguage.flag} alt="" class="lang-flag" />
+                <span data-lang-current-name class="truncate">{currentLanguage.native}</span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-dim transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="lang-dropdown w-full">
+              {languages.map((language) => (
+                <button type="button" class="lang-option" data-lang-option={language.code} data-lang-name={language.native} data-lang-flag={language.flag}>
+                  <img src={language.flag} alt="" class="lang-flag" />
+                  <span>{language.native}</span>
+                </button>
+              ))}
+            </div>
+          </details>
+        </div>
         <div class="grid gap-1 text-sm">
           {navItems.map((item) => (
             <a
               href={item.href}
+              data-i18n={item.key}
               class:list={[
                 'rounded-2xl px-4 py-3 transition-all duration-300',
-                isActive(item.href)
-                  ? 'bg-brand-softblue font-medium text-brand-navy'
-                  : 'hover:bg-blue-50'
+                isActive(item.href) ? 'bg-white/10 font-medium text-white' : 'text-brand-muted hover:bg-white/5 hover:text-white'
               ]}
             >
               {item.label}
             </a>
           ))}
-
-          <a
-            href={`${base}contact/`}
-            class="mt-2 rounded-2xl bg-brand-navy px-4 py-3 text-center font-medium text-white shadow-soft transition-all duration-300 hover:bg-brand-blue"
-          >
-            Start Inquiry
-          </a>
         </div>
       </div>
     </details>

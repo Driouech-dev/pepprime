@@ -2,42 +2,53 @@
 const base = import.meta.env.BASE_URL;
 ---
 
-<footer class="border-t border-blue-100 bg-white">
-  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.1fr_0.9fr_1fr]">
+<footer class="border-t border-white/5 bg-brand-panel/80 backdrop-blur-xl">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.15fr_0.7fr_0.8fr_1fr]">
     <div>
       <div class="flex items-center gap-3">
         <img
           src={`${base}images/logo.jpg`}
           alt="pepprime logo"
-          class="h-11 w-11 rounded-2xl border border-blue-100 object-cover shadow-sm"
+          class="h-11 w-11 rounded-2xl border border-brand-border object-cover shadow-soft"
         />
         <div>
-          <div class="text-lg font-semibold text-slate-950">pepprime</div>
-          <div class="text-xs text-slate-500">Molecular Innovation</div>
+          <div class="text-lg font-semibold text-white">pepprime</div>
+          <div class="text-xs text-brand-dim" data-i18n="site.tagline">Molecular Innovation</div>
         </div>
       </div>
 
-      <p class="mt-4 max-w-md text-sm leading-7 text-slate-600">
-        Professional peptide catalog with visible pricing, direct inquiry support, and a clean blue biotech presentation.
+      <p class="mt-4 max-w-md text-sm leading-7 text-brand-muted" data-i18n="footer.tagline">
+        Research peptide catalog with visible pricing, direct inquiry support, and a professional manufacturing-focused presentation.
       </p>
     </div>
 
     <div>
-      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Pages</h2>
-      <ul class="mt-4 space-y-3 text-sm text-slate-600">
-        <li><a class="transition hover:text-brand-navy" href={base}>Home</a></li>
-        <li><a class="transition hover:text-brand-navy" href={`${base}products/`}>Products</a></li>
-        <li><a class="transition hover:text-brand-navy" href={`${base}about/`}>About</a></li>
-        <li><a class="transition hover:text-brand-navy" href={`${base}contact/`}>Contact</a></li>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-dim" data-i18n="footer.pages">Pages</h2>
+      <ul class="mt-4 space-y-3 text-sm text-brand-muted">
+        <li><a class="transition hover:text-white" href={base} data-i18n="nav.home">Home</a></li>
+        <li><a class="transition hover:text-white" href={`${base}products/`} data-i18n="nav.products">Products</a></li>
+        <li><a class="transition hover:text-white" href={`${base}about/`} data-i18n="nav.about">About</a></li>
+        <li><a class="transition hover:text-white" href={`${base}contact/`} data-i18n="nav.contact">Contact</a></li>
       </ul>
     </div>
 
     <div>
-      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Contact</h2>
-      <ul class="mt-4 space-y-3 text-sm text-slate-600">
-        <li><span class="font-medium text-slate-950">Email:</span> <a href="mailto:info@pepprime.com" class="break-all transition hover:text-brand-navy">info@pepprime.com</a></li>
-        <li><span class="font-medium text-slate-950">WhatsApp:</span> <a href="https://wa.me/8615102940126" target="_blank" rel="noreferrer" class="transition hover:text-brand-navy">+8615102940126</a></li>
-        <li><span class="font-medium text-slate-950">Location:</span> China</li>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-dim" data-i18n="footer.policies">Policies</h2>
+      <ul class="mt-4 space-y-3 text-sm text-brand-muted">
+        <li><a class="transition hover:text-white" href={`${base}privacy-policy/`} data-i18n="policy.privacy">Privacy Policy</a></li>
+        <li><a class="transition hover:text-white" href={`${base}refund-policy/`} data-i18n="policy.refund">Refund Policy</a></li>
+        <li><a class="transition hover:text-white" href={`${base}shipping-policy/`} data-i18n="policy.shipping">Shipping Policy</a></li>
+        <li><a class="transition hover:text-white" href={`${base}terms-of-service/`} data-i18n="policy.terms">Terms of Service</a></li>
+        <li><a class="transition hover:text-white" href={`${base}track-your-order/`} data-i18n="policy.track">Track Your Order</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-dim" data-i18n="footer.contact">Contact</h2>
+      <ul class="mt-4 space-y-3 text-sm text-brand-muted">
+        <li><span class="font-medium text-white" data-i18n="contact.emailLabel">Email:</span> <a href="mailto:info@pepprime.com" class="break-all transition hover:text-white">info@pepprime.com</a></li>
+        <li><span class="font-medium text-white" data-i18n="contact.whatsappLabel">WhatsApp:</span> <a href="https://wa.me/8615102940126" target="_blank" rel="noreferrer" class="transition hover:text-white">+8615102940126</a></li>
+        <li><span class="font-medium text-white" data-i18n="contact.locationLabel">Location:</span> <span data-i18n="contact.locationValue">China</span></li>
       </ul>
     </div>
   </div>

@@ -5,56 +5,133 @@ import ProductCard from '../components/ProductCard.astro';
 import { products } from '../data/products';
 
 const featuredProducts = products.filter((product) => product.featured).slice(0, 6);
+const base = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="pepprime | Home" description="pepprime research peptide catalog with product pricing and direct inquiry.">
+<BaseLayout title="pepprime | Home" description="pepprime research peptide catalog with product pricing, professional laboratory presentation, and direct inquiry.">
   <Hero />
 
   <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16">
     <div class="grid gap-6 lg:grid-cols-[0.96fr_1.04fr]">
-      <div class="rounded-[2rem] border border-blue-100 bg-white p-6 shadow-soft sm:p-8">
-        <div class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Company</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight text-slate-950">pepprime</h2>
-        <p class="mt-4 text-sm leading-8 text-slate-600 sm:text-base">
-          pepprime is a peptide-focused company presentation built around premium blue branding, visible product pricing, and direct global inquiry.
+      <div class="rounded-[2rem] border border-brand-border bg-brand-surface/90 p-6 shadow-soft sm:p-8">
+        <div class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-300" data-i18n="home.companyEyebrow">Company</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight text-white" data-i18n="home.companyTitle">pepprime</h2>
+        <p class="mt-4 text-sm leading-8 text-brand-muted sm:text-base" data-i18n="home.companyP1">
+          pepprime is a peptide-focused company presentation built around visible pricing, clean scientific visuals, and direct global communication.
         </p>
-        <p class="mt-4 text-sm leading-8 text-slate-600 sm:text-base">
-          The website keeps attention on company image, current peptide products, clean photography, and fast customer communication.
+        <p class="mt-4 text-sm leading-8 text-brand-muted sm:text-base" data-i18n="home.companyP2">
+          The website is designed to show current products clearly while also presenting a stronger research, delivery, and manufacturing image for more professional customer confidence.
         </p>
       </div>
 
-      <div class="rounded-[2rem] border border-blue-100 bg-white p-6 shadow-soft sm:p-8">
-        <div class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Products</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight text-slate-950">Current peptide range</h2>
-        <div class="mt-6 grid gap-4 sm:grid-cols-2">
-          {[
-            ['Retatrutide', '5mg / 10mg / 15mg / 20mg / 30mg'],
-            ['Tesamorelin', '10mg'],
-            ['MOTS-C', '10mg'],
-            ['GHK-CU', '50mg / 100mg'],
-            ['BPC-157', '5mg / 10mg'],
-            ['TB500', '5mg / 10mg'],
-          ].map(([title, copy]) => (
-            <div class="rounded-3xl bg-blue-50/60 p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-50 hover:shadow-glow">
-              <div class="font-semibold text-slate-950">{title}</div>
-              <div class="mt-2 text-sm leading-7 text-slate-600">{copy}</div>
-            </div>
-          ))}
+      <div class="rounded-[2rem] border border-brand-border bg-brand-surface/90 p-6 shadow-soft sm:p-8">
+        <div class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-300" data-i18n="home.focusEyebrow">Presentation focus</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight text-white" data-i18n="home.focusTitle">Research, shipping, and controlled process</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-3xl bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.08] hover:shadow-glow">
+            <div class="font-semibold text-white" data-i18n="home.focus1Title">Laboratory identity</div>
+            <div class="mt-2 text-sm leading-7 text-brand-muted" data-i18n="home.focus1Copy">Research-driven sections supported by professional imagery and cleaner biotech styling.</div>
+          </div>
+          <div class="rounded-3xl bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.08] hover:shadow-glow">
+            <div class="font-semibold text-white" data-i18n="home.focus2Title">Worldwide communication</div>
+            <div class="mt-2 text-sm leading-7 text-brand-muted" data-i18n="home.focus2Copy">Shipping support visuals and direct contact built into the main user journey.</div>
+          </div>
+          <div class="rounded-3xl bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.08] hover:shadow-glow">
+            <div class="font-semibold text-white" data-i18n="home.focus3Title">Controlled process</div>
+            <div class="mt-2 text-sm leading-7 text-brand-muted" data-i18n="home.focus3Copy">Production and storage backgrounds used to strengthen the company image on the homepage.</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
+  <section class="mx-auto max-w-7xl px-4 py-2 sm:px-6 sm:py-4">
+    <div class="grid gap-6 lg:grid-cols-2">
+      <div
+        class="relative overflow-hidden rounded-[2rem] border border-brand-border shadow-soft"
+        role="img"
+        aria-label="Automated process line"
+        style={`background-image: linear-gradient(180deg, rgba(3, 7, 18, 0.16), rgba(3, 7, 18, 0.80)), url('${base}images/facility-process.jpg'); background-size: cover; background-position: center;`}
+      >
+        <div class="h-72 w-full sm:h-80"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-300" data-i18n="home.processEyebrow">Process control</div>
+          <div class="mt-2 text-2xl font-semibold text-white" data-i18n="home.processTitle">Automated laboratory workflow</div>
+          <p class="mt-3 max-w-md text-sm leading-7 text-blue-50/85" data-i18n="home.processCopy">A darker overlay keeps the section premium while preserving the manufacturing background.</p>
+        </div>
+      </div>
+      <div
+        class="relative overflow-hidden rounded-[2rem] border border-brand-border shadow-soft"
+        role="img"
+        aria-label="Controlled storage area"
+        style={`background-image: linear-gradient(180deg, rgba(3, 7, 18, 0.16), rgba(3, 7, 18, 0.80)), url('${base}images/facility-storage.jpg'); background-size: cover; background-position: center;`}
+      >
+        <div class="h-72 w-full sm:h-80"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-300" data-i18n="home.storageEyebrow">Controlled storage</div>
+          <div class="mt-2 text-2xl font-semibold text-white" data-i18n="home.storageTitle">Organized inventory presentation</div>
+          <p class="mt-3 max-w-md text-sm leading-7 text-blue-50/85" data-i18n="home.storageCopy">Storage imagery remains on the homepage only and supports the text instead of competing with it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16">
     <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <div class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Featured products</div>
-        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Product selection</h2>
+        <div class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-300" data-i18n="home.featuredEyebrow">Featured products</div>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-white" data-i18n="home.featuredTitle">Product selection</h2>
       </div>
-      <a href="/products" class="text-sm font-semibold text-brand-navy transition hover:text-brand-blue">See all products</a>
+      <a href={`${base}products/`} class="text-sm font-semibold text-sky-300 transition hover:text-white" data-i18n="common.seeAllProducts">See all products</a>
     </div>
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       {featuredProducts.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-16">
+    <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <div class="rounded-[2rem] border border-brand-border bg-brand-surface/90 p-6 shadow-soft sm:p-8">
+        <div class="label-pill" data-i18n="home.whyBadge">Why pepprime</div>
+        <h2 class="mt-4 text-3xl font-semibold tracking-tight text-white" data-i18n="home.whyTitle">A cleaner scientific storefront</h2>
+        <p class="mt-4 text-sm leading-8 text-brand-muted sm:text-base" data-i18n="home.whyCopy">
+          pepprime keeps attention on product clarity, home-page-only visual storytelling, and fast direct inquiry without unnecessary clutter.
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-3xl bg-white/5 p-4">
+            <div class="font-semibold text-white" data-i18n="home.why1Title">Visible pricing</div>
+            <p class="mt-2 text-sm leading-7 text-brand-muted" data-i18n="home.why1Copy">Public product prices displayed clearly across the catalog.</p>
+          </div>
+          <div class="rounded-3xl bg-white/5 p-4">
+            <div class="font-semibold text-white" data-i18n="home.why2Title">Mobile friendly</div>
+            <p class="mt-2 text-sm leading-7 text-brand-muted" data-i18n="home.why2Copy">Built to display cleanly on desktop, Android, and iPhone screens.</p>
+          </div>
+          <div class="rounded-3xl bg-white/5 p-4">
+            <div class="font-semibold text-white" data-i18n="home.why3Title">Research presentation</div>
+            <p class="mt-2 text-sm leading-7 text-brand-muted" data-i18n="home.why3Copy">Shipping and lab imagery are used as controlled backgrounds with readable text overlays.</p>
+          </div>
+          <div class="rounded-3xl bg-white/5 p-4">
+            <div class="font-semibold text-white" data-i18n="home.why4Title">Direct inquiry</div>
+            <p class="mt-2 text-sm leading-7 text-brand-muted" data-i18n="home.why4Copy">WhatsApp and email communication remain simple and easy to access.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-[2rem] border border-brand-border bg-gradient-to-br from-brand-navy via-brand-blue to-sky-500 p-8 text-white shadow-glow">
+        <div class="label-pill label-pill--light" data-i18n="home.contactBadge">Direct contact</div>
+        <h2 class="mt-4 text-3xl font-semibold tracking-tight" data-i18n="home.contactTitle">Ready for inquiry</h2>
+        <p class="mt-4 text-sm leading-8 text-blue-50 sm:text-base" data-i18n="home.contactCopy">
+          Send the product name, quantity, and destination country. pepprime will reply directly with pricing confirmation and shipping communication.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <a href="https://wa.me/8615102940126" target="_blank" rel="noreferrer" class="rounded-full bg-white px-6 py-3.5 text-center text-sm font-semibold text-brand-midnight shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50" data-i18n="common.openWhatsApp">
+            Open WhatsApp
+          </a>
+          <a href="mailto:info@pepprime.com" class="rounded-full border border-white/40 px-6 py-3.5 text-center text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10" data-i18n="common.sendEmail">
+            Send Email
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

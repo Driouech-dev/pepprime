@@ -6,43 +6,61 @@ const email = 'info@pepprime.com';
 
 <BaseLayout title="pepprime | Contact" description="Contact pepprime by email or WhatsApp.">
   <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16">
-    <div class="grid gap-8 lg:grid-cols-[1fr_0.95fr]">
+    <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
       <div>
-        <div class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Contact</div>
-        <h1 class="mt-2 text-4xl font-semibold tracking-tight text-slate-950">Contact pepprime</h1>
-        <p class="mt-4 max-w-2xl text-sm leading-8 text-slate-600 sm:text-base">
-          For product pricing, quantity request, shipping confirmation, and general inquiry, please contact pepprime directly by WhatsApp or email.
+        <div class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-300" data-i18n="contact.eyebrow">Contact</div>
+        <h1 class="mt-2 text-4xl font-semibold tracking-tight text-white" data-i18n="contact.title">Contact pepprime</h1>
+        <p class="mt-4 max-w-2xl text-sm leading-8 text-brand-muted sm:text-base" data-i18n="contact.intro">
+          For product pricing, quantity request, shipping confirmation, and general inquiry, contact pepprime directly by WhatsApp or email.
         </p>
 
         <div class="mt-8 grid gap-4 sm:grid-cols-3">
-          <div class="rounded-[1.5rem] border border-blue-100 bg-white p-5 shadow-soft">
-            <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Email</div>
-            <a href={`mailto:${email}`} class="mt-2 block break-all text-sm font-semibold text-slate-950 transition hover:text-brand-navy">{email}</a>
+          <div class="rounded-[1.5rem] border border-brand-border bg-brand-surface/90 p-5 shadow-soft">
+            <div class="text-xs uppercase tracking-[0.2em] text-brand-dim" data-i18n="contact.emailLabel">Email</div>
+            <a href={`mailto:${email}`} class="mt-2 block break-all text-sm font-semibold text-white transition hover:text-sky-300">{email}</a>
           </div>
-          <div class="rounded-[1.5rem] border border-blue-100 bg-white p-5 shadow-soft">
-            <div class="text-xs uppercase tracking-[0.2em] text-slate-400">WhatsApp</div>
-            <a href={whatsappLink} target="_blank" rel="noreferrer" class="mt-2 block text-sm font-semibold text-slate-950 transition hover:text-brand-navy">+8615102940126</a>
+          <div class="rounded-[1.5rem] border border-brand-border bg-brand-surface/90 p-5 shadow-soft">
+            <div class="text-xs uppercase tracking-[0.2em] text-brand-dim" data-i18n="contact.whatsappLabel">WhatsApp</div>
+            <a href={whatsappLink} target="_blank" rel="noreferrer" class="mt-2 block text-sm font-semibold text-white transition hover:text-sky-300">+8615102940126</a>
           </div>
-          <div class="rounded-[1.5rem] border border-blue-100 bg-white p-5 shadow-soft">
-            <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Location</div>
-            <div class="mt-2 text-sm font-semibold text-slate-950">China</div>
+          <div class="rounded-[1.5rem] border border-brand-border bg-brand-surface/90 p-5 shadow-soft">
+            <div class="text-xs uppercase tracking-[0.2em] text-brand-dim" data-i18n="contact.locationLabel">Location</div>
+            <div class="mt-2 text-sm font-semibold text-white" data-i18n="contact.locationValue">China</div>
           </div>
+        </div>
+
+        <div class="mt-8 rounded-[2rem] border border-brand-border bg-brand-surface/90 p-6 shadow-soft sm:p-8">
+          <div class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-300" data-i18n="contact.inquiryEyebrow">Direct inquiry</div>
+          <h2 class="mt-3 text-2xl font-semibold text-white" data-i18n="contact.inquiryTitle">Clear contact without extra clutter</h2>
+          <p class="mt-4 text-sm leading-8 text-brand-muted sm:text-base" data-i18n="contact.inquiryCopy">
+            The strongest visual backgrounds stay on the homepage. Contact remains focused on action, readability, and fast communication on desktop and phone.
+          </p>
         </div>
       </div>
 
-      <div class="rounded-[2rem] border border-blue-100 bg-gradient-to-br from-brand-navy via-brand-blue to-sky-500 p-8 text-white shadow-soft">
-        <div class="label-pill label-pill--light">Direct Inquiry</div>
-        <h2 class="mt-4 text-3xl font-semibold tracking-tight">Email or WhatsApp</h2>
-        <p class="mt-4 text-sm leading-8 text-blue-50 sm:text-base">
+      <div class="rounded-[2rem] border border-brand-border bg-gradient-to-br from-brand-navy via-brand-blue to-sky-500 p-8 text-white shadow-glow">
+        <div class="label-pill label-pill--light" data-i18n="contact.bigBadge">Direct inquiry</div>
+        <h2 class="mt-4 text-3xl font-semibold tracking-tight" data-i18n="contact.bigTitle">Email or WhatsApp</h2>
+        <p class="mt-4 text-sm leading-8 text-blue-50 sm:text-base" data-i18n="contact.bigCopy">
           Send the product name, required quantity, and destination country. pepprime will reply directly with pricing and shipping details.
         </p>
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <a href={whatsappLink} target="_blank" rel="noreferrer" class="rounded-full bg-white px-6 py-3.5 text-center text-sm font-semibold text-brand-navy shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50">
+          <a href={whatsappLink} target="_blank" rel="noreferrer" class="rounded-full bg-white px-6 py-3.5 text-center text-sm font-semibold text-brand-midnight shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50" data-i18n="common.openWhatsApp">
             Open WhatsApp
           </a>
-          <a href={`mailto:${email}`} class="rounded-full border border-white/40 px-6 py-3.5 text-center text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10">
+          <a href={`mailto:${email}`} class="rounded-full border border-white/40 px-6 py-3.5 text-center text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10" data-i18n="common.sendEmail">
             Send Email
           </a>
+        </div>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-[1.5rem] bg-white/10 p-5 backdrop-blur-sm">
+            <div class="text-sm font-semibold uppercase tracking-[0.18em] text-blue-50" data-i18n="contact.communicationTitle">Communication</div>
+            <p class="mt-3 text-sm leading-7 text-blue-50/90" data-i18n="contact.communicationCopy">Clear discussion for product choice, quantity, and order destination.</p>
+          </div>
+          <div class="rounded-[1.5rem] bg-white/10 p-5 backdrop-blur-sm">
+            <div class="text-sm font-semibold uppercase tracking-[0.18em] text-blue-50" data-i18n="contact.mobileTitle">Mobile friendly</div>
+            <p class="mt-3 text-sm leading-7 text-blue-50/90" data-i18n="contact.mobileCopy">Contact buttons remain easy to use on Android and iPhone screens.</p>
+          </div>
         </div>
       </div>
     </div>
