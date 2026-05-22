@@ -20,9 +20,15 @@ const base = import.meta.env.BASE_URL;
       </p>
     </div>
 
-
     <div class="mt-8 max-w-2xl rounded-[1.5rem] border border-brand-border bg-brand-surface/80 p-4 shadow-soft sm:p-5">
-      <label for="product-search" class="mb-2 block text-sm font-semibold text-white" data-i18n="products.searchLabel">Search products</label>
+      <label
+        for="product-search"
+        class="mb-2 block text-sm font-semibold text-white"
+        data-i18n="products.searchLabel"
+      >
+        Search products
+      </label>
+
       <input
         id="product-search"
         type="search"
@@ -32,10 +38,20 @@ const base = import.meta.env.BASE_URL;
       />
     </div>
 
-    <p data-product-no-results class="mt-6 hidden rounded-2xl border border-brand-border bg-white/5 px-4 py-3 text-sm text-brand-muted" data-i18n="products.noResults">No products matched that name.</p>
+    <p
+      data-product-no-results
+      class="mt-6 hidden rounded-2xl border border-brand-border bg-white/5 px-4 py-3 text-sm text-brand-muted"
+      data-i18n="products.noResults"
+    >
+      No products matched that name.
+    </p>
 
     <div data-product-grid class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {products.map((product) => <ProductCard product={product} />)}
+      {products.map((product) => (
+        <div data-product-card data-product-name={product.name.toLowerCase()}>
+          <ProductCard product={product} />
+        </div>
+      ))}
     </div>
 
     <script is:inline>
@@ -43,23 +59,29 @@ const base = import.meta.env.BASE_URL;
         const input = document.getElementById('product-search');
         const cards = Array.from(document.querySelectorAll('[data-product-card]'));
         const noResults = document.querySelector('[data-product-no-results]');
+
         if (!input || !cards.length) return;
 
         const filterCards = () => {
           const query = input.value.trim().toLowerCase();
           let visibleCount = 0;
+
           cards.forEach((card) => {
             const name = (card.getAttribute('data-product-name') || '').toLowerCase();
             const show = !query || name.includes(query);
+
             card.classList.toggle('hidden', !show);
+
             if (show) visibleCount += 1;
           });
-          if (noResults) noResults.classList.toggle('hidden', visibleCount !== 0);
+
+          if (noResults) {
+            noResults.classList.toggle('hidden', visibleCount !== 0);
+          }
         };
 
         input.addEventListener('input', filterCards);
       })();
     </script>
-
   </section>
 </BaseLayout>
